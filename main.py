@@ -11,7 +11,7 @@ my_SSTable.set_filename("SSTable.txt")
 
 my_MemTable = None
 memSize = 0
-max_Size = 5
+max_Size = 5 # you need to change maxSize
 
 while True:
     s = input().split()
