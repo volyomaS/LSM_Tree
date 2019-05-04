@@ -1,6 +1,5 @@
-A 88
-B 6
-C 7
-D 99
-N 5561
-f 5
+Bodo 170
+Dan 171
+Max 175
+Nick 180
+Sam 155

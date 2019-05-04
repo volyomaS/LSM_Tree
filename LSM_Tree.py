@@ -146,6 +146,9 @@ class SSTable:
         else:
             return data[check].split()[1]
 
+    def clear(self):
+        open(self.filename, "w").write("")
+
 
 def merge(my_MemTable, my_SSTable):
     new_data = []

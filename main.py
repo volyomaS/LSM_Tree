@@ -11,7 +11,7 @@ my_SSTable.set_filename("SSTable.txt")
 
 my_MemTable = None
 memSize = 0
-max_Size = 2 # you need to change maxSize
+max_Size = 5
 
 while True:
     s = input().split()
@@ -55,5 +55,6 @@ while True:
                 print(val)
             else:
                 print("There is no such key")
-
-print()
+    elif s[0] == "clear":
+        my_MemTable = None
+        my_SSTable.clear()
