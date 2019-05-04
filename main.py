@@ -11,8 +11,11 @@ my_SSTable.set_filename("SSTable.txt")
 
 my_MemTable = None
 memSize = 0
-max_Size = 5 # you need to change maxSize
+max_Size = 5  # you need to change maxSize
 
+print("Type 'append key value' to insert element, 'delete key' to delete element\n"
+      "with this key, 'get key' to get value of the key, 'clear' to delete all elements\n"
+      "Type 'exit' to close")
 while True:
     s = input().split()
     if s[0] == "append":

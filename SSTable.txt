@@ -1,5 +1,7 @@
+Bar 190
 Bodo 170
 Dan 171
+Foo 191
 Max 175
 Nick 180
 Sam 155
