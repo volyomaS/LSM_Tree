@@ -65,12 +65,12 @@ class MemTable:
             return curnode.value
         elif curnode.key < key:
             if curnode.right is not None:
-                curnode.right.find(key)
+                return curnode.right.find(key)
             else:
                 return -1
         elif curnode.key > key:
             if curnode.left is not None:
-                curnode.left.find(key)
+                return curnode.left.find(key)
             else:
                 return -1
 
@@ -133,6 +133,9 @@ class SSTable:
                 if i != check:
                     fout.write(data[i])
             fout.close()
+            return True
+        else:
+            return False
 
     def find(self, key):
         data = open(self.filename, "r").readlines()

@@ -21,13 +21,21 @@ while True:
     if s[0] == "append":
         key = s[1]
         value = s[2]
-        memSize += 1
+        try:
+            if not my_MemTable.delete(s[1]):
+                if not my_SSTable.delete(s[1]):
+                    memSize += 1
+        except AttributeError:
+            if not my_SSTable.delete(s[1]):
+                memSize += 1
         if my_MemTable is None:
             my_MemTable = MemTable(key, value)
         else:
             my_MemTable.append(key, value)
+        print("Successfully appended")
         if memSize > max_Size:
             merge(my_MemTable, my_SSTable)
+            print("Successfully merged")
             my_MemTable = None
             memSize = 0
     elif s[0] == "exit":
@@ -38,17 +46,25 @@ while True:
     elif s[0] == "delete":
         try:
             if not my_MemTable.delete(s[1]):
-                my_SSTable.delete(s[1])
+                if my_SSTable.delete(s[1]):
+                    print("Successfully deleted")
+                else:
+                    print("There is no such key")
+            else:
+                print("Successfully deleted")
         except AttributeError:
-            my_SSTable.delete(s[1])
+            if my_SSTable.delete(s[1]):
+                print("Successfully deleted")
+            else:
+                print("There is no such key")
     elif s[0] == "get":
         try:
             val = my_MemTable.find(s[1])
-            if val != -1:
+            if val != -1 and val is not None:
                 print(val)
             else:
                 val = my_SSTable.find(s[1])
-                if val != -1:
+                if val != -1 and val is not None:
                     print(val)
                 else:
                     print("There is no such key")
